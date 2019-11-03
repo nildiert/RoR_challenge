@@ -15,4 +15,48 @@
 //= require turbolinks
 //= require_tree .
 // = require jquery
+//= require jquery_ujs
 // = require bootstrap-sprockets
+
+
+
+$(function(){
+
+    var inputs = $(":submit");
+    var valueA = $("#calculator_a")
+    var valueB = $("#calculator_b")
+
+    function disabled(valA, valB) {
+        if ((valA < 0 || valA > 100) || (valB < 0 || valB > 100)) {
+            inputs.prop('disabled', true);
+        } else {
+            inputs.prop('disabled', false);
+        }
+    }
+
+
+
+    $(valueA).keyup(function() {
+        if (valueA.val() === '' || valueB.val() === '') {
+            inputs.prop('disabled', true);
+        } else {
+            disabled(valueA.val(), valueB.val())
+        }
+    });
+    
+    $(valueB).keyup(function() {
+        if (valueA.val() === '' || valueB.val() === '') {
+            inputs.prop('disabled', true);
+        } else {
+            disabled(valueA.val(), valueB.val())
+        }
+    });
+
+    $("form").submit(function(){
+        event.preventDefault();
+
+        // this debugger should be hit when you click the submit button!
+        // debugger;
+      });
+    
+})
