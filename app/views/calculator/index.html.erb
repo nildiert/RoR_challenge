@@ -1,8 +1,21 @@
-<%= bootstrap_form_for :calculator , url: { action: :new }, remote: true do |f| %>
-  <%= number_field_tag :a, params[:a] %>
-  <%= number_field_tag :b, params[:b] %>
-<btn>uno</btn>
-<btn>uno</btn>
-<btn>uno</btn>
-<btn>uno</btn>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center">Calculator</h2>
+      
+        <%= bootstrap_form_for :calculator , url: { action: :new }, remote: true do |f| %>
+        <%= f.number_field :a, label_class: "custom-class" %>
+        <%= f.number_field :b, label_class: "custom-class" %>
+            <div class="text-center d-flex justify-content-around">
+                <%= f.submit "   +   ", class: "btn btn-primary" %>
+                <%= f.submit  "   -   ", class: "btn btn-danger"%>
+                <%= f.submit  "   *   ", class: "btn btn-warning"%>
+                <%= f.submit  "   /   ", class: "btn btn-success"%>
+            </div>
+        <%= f.text_field :result, label_class: "custom-class", :readonly => true %>
+        <% end %>
+    </div>
+  </div> 
+</div>
+
+

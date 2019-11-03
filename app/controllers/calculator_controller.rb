@@ -3,6 +3,7 @@ class CalculatorController < ApplicationController
     def index
     end
 
-    def create(a, b)
+    def new
+        puts :params
     end
 end
