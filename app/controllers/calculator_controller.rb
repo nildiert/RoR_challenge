@@ -5,6 +5,8 @@ class CalculatorController < ApplicationController
 
     def new
     
+
+        puts params
         operation = Calculator.send(:operations, params[:commit])
         values = permited_values
         string_value = values[:full]
@@ -17,7 +19,7 @@ class CalculatorController < ApplicationController
             @calc.update(count: @calc.count + 1)
         end
         @calc.save
-
+        
         render json: @calc, only: [:operation, :result, :id, :count ], status: :ok
     end
 

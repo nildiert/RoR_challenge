@@ -17,6 +17,7 @@
 // = require jquery
 //= require jquery_ujs
 // = require bootstrap-sprockets
+//= require bootstrap
 
 
 
@@ -77,7 +78,7 @@ $(function () {
             }),
             contentType: 'application/json',
             success: function (data) {
-                var pretty = JSON.stringify(data, undefined, 2);
+                var pretty = JSON.stringify(data['calculator'], undefined, 2);
                 answer.value = pretty;
             }
         });
