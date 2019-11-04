@@ -4,8 +4,7 @@ class CalculatorController < ApplicationController
     end
 
     def new
-        
-
+    
         operation = Calculator.send(:operations, params[:commit])
         values = permited_values
         string_value = values[:full]
@@ -19,13 +18,13 @@ class CalculatorController < ApplicationController
         end
         @calc.save
 
-        puts @calc
+        # puts "="*60
+        # puts @calc
 
         render json: @calc, status: :ok
     end
 
     private 
-
 
     def permited_values
         permitted = params.require(:calculator).permit(:a, :b)
