@@ -24,6 +24,8 @@ $(function () {
 
     $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
 
+    var answer = document.getElementById('answer')
+    answer.value = '';
     var inputs = $(":submit");
     var valueA = $("#calculator_a")
     var valueB = $("#calculator_b")
@@ -57,7 +59,7 @@ $(function () {
         event.preventDefault();
         var action = $("form").attr('action');
         var method = $("form").attr('method');
-        var value = $(this).attr('value');
+        var symbol = $(this).attr('value');
 
         $.ajaxSetup({
             headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
@@ -69,18 +71,21 @@ $(function () {
             data: JSON.stringify({
                 calculator: {
                     'a': valueA.val(),
-                    'b': valueA.val()
+                    'b': valueB.val()
                 },
-                commit: value
+                commit: symbol
             }),
             contentType: 'application/json',
             success: function (data) {
-                // console.log(data);
+                var pretty = JSON.stringify(data, undefined, 2);
+                answer.value = pretty;
             }
         });
 
-        // this debugger should be hit when you click the submit button!
-        // debugger;
+        valueA.val('');
+        valueB.val('');
+        inputs.prop('disabled', true);
+
     });
 
 })

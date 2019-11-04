@@ -18,10 +18,7 @@ class CalculatorController < ApplicationController
         end
         @calc.save
 
-        # puts "="*60
-        # puts @calc
-
-        render json: @calc, status: :ok
+        render json: @calc, only: [:operation, :result, :id, :count ], status: :ok
     end
 
     private 
