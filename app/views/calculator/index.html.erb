@@ -12,8 +12,12 @@
                 <%= f.submit  "*", class: "btn btn-warning", :disabled => true%>
                 <%= f.submit  "/", class: "btn btn-success", :disabled => true%>
             </div>
-        <%= f.text_field :result, label_class: "custom-class", :readonly => true %>
         <% end %>
+        <div class="form-group">
+          <label for="answer">Answer</label>
+          <textarea class="form-control" id="answer" rows="3" disabled>
+          </textarea>
+        </div>
     </div>
   </div> 
 </div>

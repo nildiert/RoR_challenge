@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_11_03_190456) do
   enable_extension "plpgsql"
 
   create_table "calculators", force: :cascade do |t|
-    t.string "text_operation"
-    t.integer "result"
-    t.integer "count"
+    t.string "operation"
+    t.integer "result", default: 0
+    t.integer "count", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

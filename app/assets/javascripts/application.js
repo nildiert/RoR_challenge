@@ -53,8 +53,20 @@ $(function(){
     });
 
     $("form").submit(function(){
-        event.preventDefault();
 
+
+        var token = $('meta[name=csrf-token]').attr('content');
+
+        event.preventDefault();
+        var action = $(this).attr('action');
+        var method = $(this).attr('method');
+    
+        // $.ajax({
+        //   method: method,
+        //   url: action,
+        //   data: { a: valueA.val(), b: valueA.val() }
+        // });
+    
         // this debugger should be hit when you click the submit button!
         // debugger;
       });
