@@ -32,20 +32,4 @@ class Calculator < ApplicationRecord
         operation
     end
 
-
-    # def self.object(str, answer)
-    #     if Calculator.where(:text_operation => str).blank?
-    #         @calc = Calculator.new(text_operation: string_value, result: answer)
-    #     else
-    #         @calc = Calculator.find_by(text_operation: string_value)
-    #         @calc.update(count: @calc.count + 1)
-    #         @calc.save
-    #     end
-    #     return @calc
-    # end
-
-
-    # private 
-
-
 end

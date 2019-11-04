@@ -5,6 +5,7 @@ class CalculatorController < ApplicationController
 
     def new
         
+
         operation = Calculator.send(:operations, params[:commit])
         values = permited_values
         string_value = values[:full]
@@ -18,12 +19,9 @@ class CalculatorController < ApplicationController
         end
         @calc.save
 
-        
-        puts "="*50
-        puts "Te amo Dreisfield"
-        p @calc
-        # render :index
-        # byebug
+        puts @calc
+
+        render json: @calc, status: :ok
     end
 
     private 

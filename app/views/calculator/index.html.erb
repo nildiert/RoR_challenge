@@ -3,7 +3,7 @@
     <div class="col-sm-6 col-sm-offset-3">
       <h2 class="text-center">Calculator</h2>
       
-        <%= bootstrap_form_for :calculator , url: { action: :new }, method: :post , remote: true do |f| %>
+        <%= bootstrap_form_for :calculator , url: { action: :new }, remote: true, method: :post do |f| %>
         <%= f.number_field :a, label_class: "custom-class" %>
         <%= f.number_field :b, label_class: "custom-class" %>
             <div class="text-center d-flex justify-content-around">

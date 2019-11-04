@@ -20,7 +20,10 @@
 
 
 
-$(function(){
+$(function () {
+
+    $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
+
 
     var inputs = $(":submit");
     var valueA = $("#calculator_a")
@@ -36,15 +39,7 @@ $(function(){
 
 
 
-    $(valueA).keyup(function() {
-        if (valueA.val() === '' || valueB.val() === '') {
-            inputs.prop('disabled', true);
-        } else {
-            disabled(valueA.val(), valueB.val())
-        }
-    });
-    
-    $(valueB).keyup(function() {
+    $(valueA).keyup(function () {
         if (valueA.val() === '' || valueB.val() === '') {
             inputs.prop('disabled', true);
         } else {
@@ -52,23 +47,43 @@ $(function(){
         }
     });
 
-    $("form").submit(function(){
+    $(valueB).keyup(function () {
+        if (valueA.val() === '' || valueB.val() === '') {
+            inputs.prop('disabled', true);
+        } else {
+            disabled(valueA.val(), valueB.val())
+        }
+    });
 
-
-        var token = $('meta[name=csrf-token]').attr('content');
+    $("form").submit(function () {
+        // var token = $('meta[name=csrf-token]').attr('content');
 
         event.preventDefault();
         var action = $(this).attr('action');
         var method = $(this).attr('method');
-    
-        // $.ajax({
-        //   method: method,
-        //   url: action,
-        //   data: { a: valueA.val(), b: valueA.val() }
+
+        // $.ajaxSetup({
+        //     headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
         // });
-    
+
+        // $.ajax({
+        //     method: method,
+        //     url: action,
+        //     data: JSON.stringify({
+        //         calculator: {
+        //             'a': valueA.val(),
+        //             'b': valueA.val()
+        //         },
+        //         commit: 
+        //     }),
+        //     contentType: 'application/json',
+        //     success: function (data) {
+        //         console.log(data);
+        //     }
+        // });
+
         // this debugger should be hit when you click the submit button!
         // debugger;
-      });
-    
+    });
+
 })
